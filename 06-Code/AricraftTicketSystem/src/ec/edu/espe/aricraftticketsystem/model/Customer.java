@@ -29,7 +29,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return getId() + "," + name + "," + trading + "," + thelephone + "," + email + "," + reservation ;
+        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation ;
     }
 
     /**

@@ -24,7 +24,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        return paymentmethod + "," + price + "," + vat + "," + subtotal;
+        return paymentmethod + ";" + price + ";" + vat + ";" + subtotal;
     }
 
     /**

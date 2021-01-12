@@ -26,7 +26,7 @@ public class Balance {
 
     @Override
     public String toString() {
-        return "Balance{" + "numberofcustomers=" + numberofcustomers + ", numberofflights=" + numberofflights + ", cancelations=" + cancelations + ", reservations=" + reservations + ", gain=" + gain + '}';
+        return "Balance{" + "numberofcustomers=" + numberofcustomers + "; numberofflights=" + numberofflights + "; cancelations=" + cancelations + "; reservations=" + reservations + "; gain=" + gain + '}';
     }
 
     /**

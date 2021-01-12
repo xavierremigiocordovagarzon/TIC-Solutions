@@ -22,7 +22,7 @@ public class Trading {
 
     @Override
     public String toString() {
-        return ticket + "," + payment + "," + voucher;
+        return ticket + ";" + payment + ";" + voucher;
     }
 
     /**

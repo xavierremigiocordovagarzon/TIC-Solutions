@@ -11,23 +11,23 @@ package ec.edu.espe.aricraftticketsystem.model;
  */
 public class Ticket {
     private int code;
-    private int seatnumber;
+    private Seat seat;
     private float price;
-    private Customer customer_data;
     private String setlocation;
 
-    public Ticket(int code, int seatnumber, float price, Customer customer_data, String setlocation) {
+    public Ticket(int code, Seat seat, float price, String setlocation) {
         this.code = code;
-        this.seatnumber = seatnumber;
+        this.seat = seat;
         this.price = price;
-        this.customer_data = customer_data;
         this.setlocation = setlocation;
     }
 
     @Override
     public String toString() {
-        return "Ticket{" + "code=" + code + ", seatnumber=" + seatnumber + ", price=" + price + ", customer_data=" + customer_data + ", setlocation=" + setlocation + '}';
+        return "Ticket{" + "code=" + code + ", seat=" + seat + ", price=" + price + ", setlocation=" + setlocation + '}';
     }
+
+
 
     /**
      * @return the code
@@ -44,20 +44,6 @@ public class Ticket {
     }
 
     /**
-     * @return the seatnumber
-     */
-    public int getSeatnumber() {
-        return seatnumber;
-    }
-
-    /**
-     * @param seatnumber the seatnumber to set
-     */
-    public void setSeatnumber(int seatnumber) {
-        this.seatnumber = seatnumber;
-    }
-
-    /**
      * @return the price
      */
     public float getPrice() {
@@ -70,21 +56,7 @@ public class Ticket {
     public void setPrice(float price) {
         this.price = price;
     }
-
-    /**
-     * @return the customer_data
-     */
-    public Customer getCustomer_data() {
-        return customer_data;
-    }
-
-    /**
-     * @param customer_data the customer_data to set
-     */
-    public void setCustomer_data(Customer customer_data) {
-        this.customer_data = customer_data;
-    }
-
+    
     /**
      * @return the setlocation
      */
@@ -97,5 +69,19 @@ public class Ticket {
      */
     public void setSetlocation(String setlocation) {
         this.setlocation = setlocation;
+    }
+
+    /**
+     * @return the seat
+     */
+    public Seat getSeat() {
+        return seat;
+    }
+
+    /**
+     * @param seat the seat to set
+     */
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 }

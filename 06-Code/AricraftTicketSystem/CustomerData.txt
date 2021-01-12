@@ -1,0 +1,1 @@
+Customer{name=Cordova Garzon Xavier Remigio, trading=Trading{ticket=Ticket{code=1, seat=Seat{location=Ventana, number=6}, price=560.0, setlocation=Ventana}, payment=Payment{paymentmethod=, price=560.0, vat=0.12, subtotal=500.0}, voucher=false}, id=1719303800, thelephone=992661132, email=, reservation=Reservation{date=14/12/2021, destination=Mexico}}

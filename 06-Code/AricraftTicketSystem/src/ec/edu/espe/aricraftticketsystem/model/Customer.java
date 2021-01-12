@@ -12,12 +12,12 @@ package ec.edu.espe.aricraftticketsystem.model;
 public class Customer {
     private String name;
     private Trading trading;
-    private int id;
-    private int thelephone;
+    private String id;
+    private String thelephone;
     private String email;
     private Reservation reservation;
 
-    public Customer(String name, Trading trading, int id, int thelephone, String email, Reservation reservation) {
+    public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation) {
         this.name = name;
         this.trading = trading;
         this.id = id;
@@ -26,9 +26,10 @@ public class Customer {
         this.reservation = reservation;
     }
 
+
     @Override
     public String toString() {
-        return "Customer{" + "name=" + name + ", trading=" + trading + ", id=" + id + ", thelephone=" + thelephone + ", email=" + email + ", reservation=" + reservation + '}';
+        return getId() + "," + name + "," + trading + "," + thelephone + "," + email + "," + reservation ;
     }
 
     /**
@@ -59,32 +60,12 @@ public class Customer {
         this.trading = trading;
     }
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the thelephone
-     */
-    public int getThelephone() {
-        return thelephone;
-    }
 
     /**
      * @param thelephone the thelephone to set
      */
     public void setThelephone(int thelephone) {
-        this.thelephone = thelephone;
+        this.setThelephone(thelephone);
     }
 
     /**
@@ -113,6 +94,27 @@ public class Customer {
      */
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
+    }
+
+    /**
+     * @param thelephone the thelephone to set
+     */
+    public void setThelephone(String thelephone) {
+        this.thelephone = thelephone;
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

@@ -21,7 +21,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" + "date=" + date + ", destination=" + destination + '}';
+        return date + "," + destination;
     }
 
     

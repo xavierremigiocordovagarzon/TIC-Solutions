@@ -24,7 +24,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "code=" + code + ", seat=" + seat + ", price=" + price + ", setlocation=" + setlocation + '}';
+        return code + "," + seat + "," + price + "," + setlocation;
     }
 
 

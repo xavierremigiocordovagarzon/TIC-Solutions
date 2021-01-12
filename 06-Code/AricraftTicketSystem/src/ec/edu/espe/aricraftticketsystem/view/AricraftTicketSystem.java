@@ -13,6 +13,7 @@ import ec.edu.espe.aricraftticketsystem.model.Reservation;
 import ec.edu.espe.aricraftticketsystem.model.Seat;
 import ec.edu.espe.aricraftticketsystem.model.Ticket;
 import ec.edu.espe.aricraftticketsystem.model.Trading;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -45,20 +46,20 @@ public class AricraftTicketSystem {
             switch (option) {
                 case 1:
                     read.nextLine();
-                    System.out.print("\nIngrese sus apellidos y nombres: ");
+                    System.out.print("Ingrese sus apellidos y nombres: ");
                     String Cname = read.nextLine();
-                    System.out.println("\nIngrese su cedula: ");
-                    int Cid = read.nextInt();
-                    System.out.println("\nIngrese su numero telefonico: ");
-                    int Cphone = read.nextInt();
-                    System.out.println("\nIngrese correo electronico: ");
+                    System.out.println("Ingrese su cedula: ");
+                    String Cid = read.nextLine();
+                    System.out.println("Ingrese su numero telefonico: ");
+                    String Cphone = read.nextLine();
+                    System.out.println("Ingrese correo electronico: ");
                     String Cemail = read.nextLine();
-                    System.out.println("\nIngrese fecha de vuelo (DD/MM/AAAA): ");
+                    System.out.println("Ingrese fecha de vuelo (DD/MM/AAAA): ");
                     String Cdate = read.nextLine();
-                    System.out.println("\nIngrese lugar de destino: ");
+                    System.out.println("Ingrese lugar de destino: ");
                     String Cdest = read.nextLine();
                     Reservation Cres = new Reservation(Cdate, Cdest);
-                    System.out.println("\nSeleccione ubicacion de asiento:");
+                    System.out.println("Seleccione ubicacion de asiento:");
                     System.out.println("1.Ventana");
                     System.out.println("2.Pasillo");
                     int op = read.nextInt();
@@ -67,14 +68,14 @@ public class AricraftTicketSystem {
                     } else {
                         Cs = "Pasillo";
                     }
-                    System.out.println("\nIngrese numero de asietno: ");
+                    System.out.println("Ingrese numero de asietno: ");
                     int Csnumb = read.nextInt();
                     Seat Cseat = new Seat(Cs, Csnumb);
                     Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
-                    System.out.println("\nIngrese metodo de pago: ");
+                    System.out.println("Ingrese metodo de pago: ");
                     String Cpaymentmeth = read.nextLine();
                     Payment Cpay = new Payment(Cpaymentmeth, 560, (float) 0.12, 500);
-                    System.out.println("\n¿Desea generar un boucher?");
+                    System.out.println("¿Desea generar un boucher?");
                     System.out.println("1.Si");
                     System.out.println("2.No");
                     int op2 = read.nextInt();
@@ -86,11 +87,17 @@ public class AricraftTicketSystem {
                     }
                     Trading Ctrade = new Trading(Cticket, Cpay, boucher);
                     Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres);
-                    FileManager.save("CustomerData.txt", C1.toString());
+                    FileManager.save("CustomerData.csv", C1.toString());
+                    codeconter++;
                     break;
                 case 2:
-
+                    read.nextLine();
+                    System.out.println("Ingrese su cedula: ");
+                    String Cids = read.nextLine();
+                    ArrayList data = FileManager.find("CustomerData.csv", Cids);
+                    System.out.println(data);
                     break;
+
                 case 3:
 
                     break;

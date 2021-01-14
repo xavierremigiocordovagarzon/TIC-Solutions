@@ -5,6 +5,9 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author George
@@ -12,11 +15,20 @@ package ec.edu.espe.aricraftticketsystem.model;
 class Aircraft {
 
     private String aricraftnumber;
-    private Seat seat;
+    private ArrayList<Seat> seat;
     private boolean availability;
     private int numberofseat;
 
-    public Aircraft(String aricraftnumber, Seat seat, boolean availability, int numberofseat) {
+    
+
+    public Seat identifySeat(Seat seat) {
+        ArrayList<Seat> seatuse = new ArrayList<>();
+        seatuse.addAll(Arrays.asList(seat));
+        
+        return seat;
+    }
+
+    public Aircraft(String aricraftnumber, ArrayList<Seat> seat, boolean availability, int numberofseat) {
         this.aricraftnumber = aricraftnumber;
         this.seat = seat;
         this.availability = availability;
@@ -25,11 +37,8 @@ class Aircraft {
 
     @Override
     public String toString() {
-        return "Aircraft{" + "aricraftnumber=" + aricraftnumber + ", seat=" + seat + ", availability=" + availability + ", numberofseat=" + numberofseat + '}';
+        return "Aircraft{" + "aricraftnumber=" + getAricraftnumber() + ", seat=" + getSeat() + ", availability=" + isAvailability() + ", numberofseat=" + getNumberofseat() + '}';
     }
-    
-    
-    
 
     /**
      * @return the aricraftnumber
@@ -48,14 +57,14 @@ class Aircraft {
     /**
      * @return the seat
      */
-    public Seat getSeat() {
+    public ArrayList<Seat> getSeat() {
         return seat;
     }
 
     /**
      * @param seat the seat to set
      */
-    public void setSeat(Seat seat) {
+    public void setSeat(ArrayList<Seat> seat) {
         this.seat = seat;
     }
 
@@ -86,4 +95,6 @@ class Aircraft {
     public void setNumberofseat(int numberofseat) {
         this.numberofseat = numberofseat;
     }
+
+    
 }

@@ -10,12 +10,38 @@ package ec.edu.espe.aricraftticketsystem.model;
  * @author George
  */
 public class Customer {
+
     private String name;
     private Trading trading;
     private String id;
     private String thelephone;
     private String email;
     private Reservation reservation;
+
+    public Trading realizeTrading(Trading trading) {
+        Ticket ticket = null;
+        Payment payment = null;
+        Trading tradingUse = new Trading(ticket, payment, true);
+
+        return tradingUse;
+    }
+
+    public Reservation generateReservation(Reservation reservation) {
+
+        String name = null;
+        String email = null;
+        Reservation reservationUse = new Reservation(name, email);
+
+        return reservationUse;
+    }
+
+    public Reservation realizeCancellation(Reservation reservation) {
+        String name = " ";
+        String email = " ";
+        Reservation reservationUse = new Reservation(name, email);
+
+        return reservationUse;
+    }
 
     public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation) {
         this.name = name;
@@ -26,10 +52,9 @@ public class Customer {
         this.reservation = reservation;
     }
 
-
     @Override
     public String toString() {
-        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation ;
+        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation;
     }
 
     /**
@@ -59,7 +84,6 @@ public class Customer {
     public void setTrading(Trading trading) {
         this.trading = trading;
     }
-
 
     /**
      * @param thelephone the thelephone to set

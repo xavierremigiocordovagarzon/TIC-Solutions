@@ -26,20 +26,25 @@ public class Airline {
         aircraftUse.addAll(Arrays.asList(aircraft));
         return aircraft;
     }
-
+    
     public Employee getEmployeeData(Employee employee) {
         ArrayList<Employee> employeeUse = new ArrayList<>();
         employeeUse.addAll(Arrays.asList(employee));
         return employee;
     }
 
-    public Airline(String name, ArrayList<Aircraft> aircraft, ArrayList<Employee> employee, String direction, int telephone) {
-         this.name = "AEROLINEAMAX";
+    public Airline(ArrayList<Aircraft> aircraft, ArrayList<Employee> employee) {
         this.aircraft = aircraft;
         this.employee = employee;
-        this.direction = "AEROPUERTO INTERNACIONAL DE QUITO\n TABABELO S/N VIA, QUITO 170907";
+    }
+    
+    
+    public Airline() {
+        this.name = "AEROILENEAMAX";
+        this.direction = "AEROPUERTO INTERNACIONAL\nDE QUITOTABABELO S/N VIA, QUITO\n170907";
         this.telephone = 2955789;
     }
+    
 
     @Override
     public String toString() {

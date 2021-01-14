@@ -8,6 +8,7 @@ package ec.edu.espe.aricraftticketsystem.view;
 import ec.edu.espe.Filemanager.utils.FileManager;
 import ec.edu.espe.aricraftticketsystem.model.Airline;
 import ec.edu.espe.aricraftticketsystem.model.Customer;
+import ec.edu.espe.aricraftticketsystem.model.Employee;
 import ec.edu.espe.aricraftticketsystem.model.Payment;
 import ec.edu.espe.aricraftticketsystem.model.Reservation;
 import ec.edu.espe.aricraftticketsystem.model.Seat;
@@ -30,15 +31,23 @@ public class AricraftTicketSystem {
 
         Scanner read = new Scanner(System.in);
         
-        
+              
+        Airline airlineUse = new Airline();
+       // Employee employeeUse = new Employee(read);
+        airlineUse.getAirplaneData(read);
+             
         int option;
         int codeconter = 1;
         String Cs = null;
         do {
             System.out.println("\n");
-            System.out.println("===============================");
-            System.out.println("BIENVENIDO A AEROILENEAMAX");
-            System.out.println("===============================");
+            System.out.println("=========================================");
+            System.out.println("     BIENVENIDO A " + airlineUse.getName());
+            System.out.println("=========================================");
+            System.out.println("UBICACION: " + airlineUse.getDirection());
+            System.out.println("=========================================");
+            System.out.println("TELEFONO: " + airlineUse.getTelephone());
+            System.out.println("=========================================");
             System.out.println("1. Comprar vuelos");
             System.out.println("2. Cancelar vuelos");
             System.out.println("3. Salir");
@@ -121,6 +130,13 @@ public class AricraftTicketSystem {
                     break;
             }
         } while (option != 3);
+        
+        
+        
+        //================================================================================================
+        
+        
+        
     }
 
 }

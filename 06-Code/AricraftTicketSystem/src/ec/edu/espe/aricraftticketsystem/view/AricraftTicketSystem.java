@@ -29,13 +29,15 @@ public class AricraftTicketSystem {
         // TODO code application logic here
 
         Scanner read = new Scanner(System.in);
+        
+        
         int option;
         int codeconter = 1;
         String Cs = null;
         do {
             System.out.println("\n");
             System.out.println("===============================");
-            System.out.println("BIENVENIDO A AEROLINEMAX");
+            System.out.println("BIENVENIDO A AEROILENEAMAX");
             System.out.println("===============================");
             System.out.println("1. Comprar vuelos");
             System.out.println("2. Cancelar vuelos");

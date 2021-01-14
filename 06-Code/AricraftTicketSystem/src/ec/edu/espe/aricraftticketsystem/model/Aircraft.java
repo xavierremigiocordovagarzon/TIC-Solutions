@@ -9,7 +9,8 @@ package ec.edu.espe.aricraftticketsystem.model;
  *
  * @author George
  */
-public class Aircraft {
+class Aircraft {
+
     private String aricraftnumber;
     private Seat seat;
     private boolean availability;
@@ -24,8 +25,11 @@ public class Aircraft {
 
     @Override
     public String toString() {
-        return "Aircraft{" + "aricraftnumber=" + aricraftnumber + "; seat=" + seat + "; availability=" + availability + "; numberofseat=" + numberofseat + '}';
+        return "Aircraft{" + "aricraftnumber=" + aricraftnumber + ", seat=" + seat + ", availability=" + availability + ", numberofseat=" + numberofseat + '}';
     }
+    
+    
+    
 
     /**
      * @return the aricraftnumber

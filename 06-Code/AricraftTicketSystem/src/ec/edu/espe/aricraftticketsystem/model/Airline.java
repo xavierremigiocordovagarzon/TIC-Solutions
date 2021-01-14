@@ -5,11 +5,14 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author George
  */
 public class Airline {
+
     private String name;
     private Aircraft aircraft;
     private Employee employee;
@@ -17,12 +20,29 @@ public class Airline {
     private int telephone;
     private Balance balance;
 
-    public Airline(String name, Aircraft aircraft, Employee employee, String direction, int telephone, Balance balance) {
-        this.name = name;
+    public String getAirplaneData(ArrayList<Aircraft> aircraftUse) {
+        
+        
+
+        //seatUse = new Seat("planenumber", 1);
+
+        return null;
+    }
+
+    public void getEmployeeData(Employee employee) {
+
+    }
+
+    public void genereteBalance(Balance balance) {
+
+    }
+
+    public Airline(String name, Employee employee, String direction, int telephone, Balance balance) {
+        this.name = "AEROLINEAMAX";
         this.aircraft = aircraft;
         this.employee = employee;
-        this.direction = direction;
-        this.telephone = telephone;
+        this.direction = "AEROPUERTO INTERNACIONAL DE QUITO\n TABABELO S/N VIA, QUITO 170907";
+        this.telephone = 2955789;
         this.balance = balance;
     }
 

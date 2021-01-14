@@ -13,18 +13,22 @@ public class Ticket {
     private int code;
     private Seat seat;
     private float price;
-    private String setlocation;
 
-    public Ticket(int code, Seat seat, float price, String setlocation) {
+
+    public Ticket(int code, Seat seat, float price) {
         this.code = code;
         this.seat = seat;
         this.price = price;
-        this.setlocation = setlocation;
+      
+    }
+    public Seat datosdeSeat(Seat seat){
+        
+        return seat;
     }
 
     @Override
     public String toString() {
-        return code + ";" + seat + ";" + price + ";" + setlocation;
+        return code + ";" + seat + ";" + price;
     }
 
 
@@ -57,20 +61,6 @@ public class Ticket {
         this.price = price;
     }
     
-    /**
-     * @return the setlocation
-     */
-    public String getSetlocation() {
-        return setlocation;
-    }
-
-    /**
-     * @param setlocation the setlocation to set
-     */
-    public void setSetlocation(String setlocation) {
-        this.setlocation = setlocation;
-    }
-
     /**
      * @return the seat
      */

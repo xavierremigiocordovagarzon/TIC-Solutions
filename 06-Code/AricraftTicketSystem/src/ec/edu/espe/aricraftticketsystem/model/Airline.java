@@ -32,17 +32,12 @@ public class Airline {
         employeeUse.addAll(Arrays.asList(employee));
         return employee;
     }
-
-    public Airline(ArrayList<Aircraft> aircraft, ArrayList<Employee> employee) {
-        this.aircraft = aircraft;
-        this.employee = employee;
-    }
-    
-    
+        
     public Airline() {
         this.name = "AEROILENEAMAX";
         this.direction = "AEROPUERTO INTERNACIONAL\nDE QUITOTABABELO S/N VIA, QUITO\n170907";
         this.telephone = 2955789;
+        
     }
     
 

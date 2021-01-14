@@ -5,6 +5,9 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author George
@@ -17,6 +20,9 @@ public class Customer {
     private String thelephone;
     private String email;
     private Reservation reservation;
+    private String state;
+
+    
 
     public Trading realizeTrading(Trading trading) {
         Ticket ticket = null;
@@ -28,33 +34,37 @@ public class Customer {
 
     public Reservation generateReservation(Reservation reservation) {
 
-        String name = null;
-        String email = null;
-        Reservation reservationUse = new Reservation(name, email);
-
-        return reservationUse;
+        ArrayList<Reservation> reservationUse = new ArrayList<>();
+        reservationUse.addAll(Arrays.asList(reservation));
+        return reservation;
     }
 
-    public Reservation realizeCancellation(Reservation reservation) {
-        String name = " ";
-        String email = " ";
-        Reservation reservationUse = new Reservation(name, email);
-
-        return reservationUse;
+    public String realizeCancellation() {
+        state= "CANCAELADO";
+        return state;
     }
 
-    public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation) {
+    public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation,String state) {
         this.name = name;
         this.trading = trading;
         this.id = id;
         this.thelephone = thelephone;
         this.email = email;
         this.reservation = reservation;
+        this.state= state;
     }
 
     @Override
     public String toString() {
-        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation;
+        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation + ";" + state;
+    }
+    
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     /**

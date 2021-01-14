@@ -30,12 +30,11 @@ public class AricraftTicketSystem {
         // TODO code application logic here
 
         Scanner read = new Scanner(System.in);
-        
-              
+
         Airline airlineUse = new Airline();
-       // Employee employeeUse = new Employee(read);
-        airlineUse.getAirplaneData(read);
-             
+        // Employee employeeUse = new Employee(read);
+        //airlineUse.getAirplaneData(read);
+
         int option;
         int codeconter = 1;
         String Cs = null;
@@ -78,18 +77,18 @@ public class AricraftTicketSystem {
                         op = read.nextInt();
                         if (op == 1) {
                             Cs = "Ventana";
-                        }  else if (op == 2) {
+                        } else if (op == 2) {
                             Cs = "Pasillo";
                         } else {
                             System.out.println("Ingresar opcion valida");
                         }
-                                                                     
-                    }  while(op <= 0 || op >= 3);
+
+                    } while (op <= 0 || op >= 3);
                     read.nextLine();
                     System.out.println("Ingrese numero de asietno: ");
                     int Csnumb = read.nextInt();
                     Seat Cseat = new Seat(Cs, Csnumb);
-                    Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
+                    Ticket Cticket = new Ticket(codeconter, Cseat, 560);
                     System.out.println("Ingrese metodo de pago: ");
                     String Cpaymentmeth = read.nextLine();
                     Payment Cpay = new Payment(Cpaymentmeth, 560, 0.12F, 500);
@@ -110,9 +109,21 @@ public class AricraftTicketSystem {
                     } while (op2 <= 0 || op2 >= 3);
                     read.nextLine();
                     Trading Ctrade = new Trading(Cticket, Cpay, boucher);
-                    Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres);
+                    String stateUse = "VIGENTE";
+                    Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres, stateUse);
                     FileManager.save("CustomerData.csv", C1.toString());
                     codeconter++;
+                    
+                    Seat cSeat = new Seat(Cdate, Csnumb);
+                    System.out.println("==================================================");
+                    System.out.println("CODIGO:");
+                    //System.out.println("UBICACION:" + );
+                    //System.out.println("N° ASIENTO:" + );
+                    System.out.println(Cticket.getSeat());
+                    System.out.println("ESTADO:" + C1.getState());
+                    System.out.println("PRECIO:" + Cticket.getPrice());
+                    System.out.println("==================================================");
+
                     break;
                 case 2:
                     read.nextLine();
@@ -130,13 +141,8 @@ public class AricraftTicketSystem {
                     break;
             }
         } while (option != 3);
-        
-        
-        
+
         //================================================================================================
-        
-        
-        
     }
 
 }

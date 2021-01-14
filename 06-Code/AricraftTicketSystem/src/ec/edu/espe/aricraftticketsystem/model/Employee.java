@@ -24,10 +24,10 @@ public class Employee {
         this.telephone = telephone;
     }
     
-    public Employee (){
-        
-         Employee employee = new Employee(name, id, salary, turn, telephone);
-        //return employee;
+    public Employee identifyTypeOfEmployee(Employee employee) {
+
+        employee = new Employee(name, id, salary, turn, telephone);
+        return employee;
     }
 
     @Override

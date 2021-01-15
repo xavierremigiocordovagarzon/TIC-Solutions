@@ -31,9 +31,10 @@ public class AricraftTicketSystem {
 
         Scanner read = new Scanner(System.in);
         Gson jsoncon = new Gson();
-        
-        
+        ArrayList<Trading> CAtrade = new ArrayList<>();
+        ArrayList<Reservation> CAres = new ArrayList<>();
         int option;
+        int op3;
         int codeconter = 1;
         String Cs = null;
         do {
@@ -58,53 +59,62 @@ public class AricraftTicketSystem {
                     String Cphone = read.nextLine();
                     System.out.println("Ingrese correo electronico: ");
                     String Cemail = read.nextLine();
-                    System.out.println("Ingrese fecha de vuelo (DD/MM/AAAA): ");
-                    String Cdate = read.nextLine();
-                    System.out.println("Ingrese lugar de destino: ");
-                    String Cdest = read.nextLine();
-                    Reservation Cres = new Reservation(Cdate, Cdest);
-                    int op;
                     do {
-                        System.out.println("Seleccione ubicacion de asiento:");
-                        System.out.println("1.Ventana");
-                        System.out.println("2.Pasillo");
-                        op = read.nextInt();
-                        if (op == 1) {
-                            Cs = "Ventana";
-                        }  else if (op == 2) {
-                            Cs = "Pasillo";
-                        } else {
-                            System.out.println("Ingresar opcion valida");
-                        }
-                                                                     
-                    }  while(op <= 0 || op >= 3);
-                    read.nextLine();
-                    System.out.println("Ingrese numero de asietno: ");
-                    int Csnumb = read.nextInt();
-                    Seat Cseat = new Seat(Cs, Csnumb);
-                    Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
-                    read.nextLine();
-                    System.out.println("Ingrese metodo de pago: ");
-                    String Cpaymentmeth = read.nextLine();
-                    Payment Cpay = new Payment(Cpaymentmeth, 560, 0.12F, 500);
-                    int op2;
-                    boolean boucher = false;
-                    do {
-                        System.out.println("¿Desea generar un boucher?");
+                        System.out.println("Ingrese fecha de vuelo (DD/MM/AAAA): ");
+                        String Cdate = read.nextLine();
+                        System.out.println("Ingrese lugar de destino: ");
+                        String Cdest = read.nextLine();
+                        Reservation Cres = new Reservation(Cdate, Cdest);
+                        int op;
+                        do {
+                            System.out.println("Seleccione ubicacion de asiento:");
+                            System.out.println("1.Ventana");
+                            System.out.println("2.Pasillo");
+                            op = read.nextInt();
+                            if (op == 1) {
+                                Cs = "Ventana";
+                            } else if (op == 2) {
+                                Cs = "Pasillo";
+                            } else {
+                                System.out.println("Ingresar opcion valida");
+                            }
+
+                        } while (op <= 0 || op >= 3);
+                        read.nextLine();
+                        System.out.println("Ingrese numero de asietno: ");
+                        int Csnumb = read.nextInt();
+                        Seat Cseat = new Seat(Cs, Csnumb);
+                        Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
+                        read.nextLine();
+                        System.out.println("Ingrese metodo de pago: ");
+                        String Cpaymentmeth = read.nextLine();
+                        Payment Cpay = new Payment(Cpaymentmeth, 560, 0.12F, 500);
+                        CAres.add(Cres);
+                        int op2;
+                        boolean boucher = false;
+                        do {
+                            System.out.println("¿Desea generar un boucher?");
+                            System.out.println("1.Si");
+                            System.out.println("2.No");
+                            op2 = read.nextInt();
+                            if (op2 == 1) {
+                                boucher = true;
+                            } else if (op2 == 2) {
+                                boucher = false;
+                            } else {
+                                System.out.println("Ingresar opcion valida");
+                            }
+                        } while (op2 <= 0 || op2 >= 3);
+                        read.nextLine();
+                        Trading Ctrade = new Trading(Cticket, Cpay, boucher);
+                        CAtrade.add(Ctrade);
+                        System.out.println("Desea hacer otra reservacion?");
                         System.out.println("1.Si");
                         System.out.println("2.No");
-                        op2 = read.nextInt();
-                        if (op2 == 1) {
-                            boucher = true;
-                        } else if (op2 == 2) {
-                            boucher = false;
-                        } else {
-                            System.out.println("Ingresar opcion valida");
-                        }
-                    } while (op2 <= 0 || op2 >= 3);
-                    read.nextLine();
-                    Trading Ctrade = new Trading(Cticket, Cpay, boucher);
-                    Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres);
+                        op3 = read.nextInt();
+                        read.nextLine();
+                    } while (op3 != 2);
+                    Customer C1 = new Customer(Cname, CAtrade, Cid, Cphone, Cemail, CAres);
                     String convert;
                     convert = jsoncon.toJson(C1);
                     FileManager.save("CustomerData.json", convert);

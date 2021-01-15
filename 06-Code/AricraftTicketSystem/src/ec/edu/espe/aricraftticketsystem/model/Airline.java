@@ -6,7 +6,6 @@
 package ec.edu.espe.aricraftticketsystem.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -15,35 +14,41 @@ import java.util.Arrays;
 public class Airline {
 
     private String name;
-    private ArrayList<Aircraft> aircraft;
-    private ArrayList<Employee> employee;
+    private Aircraft aircraft;
+    private Employee employee;
     private String direction;
     private int telephone;
-   
+    private Balance balance;
 
-    public Aircraft getAirplaneData(Aircraft aircraft) {
-        ArrayList<Aircraft> aircraftUse = new ArrayList<>();
-        aircraftUse.addAll(Arrays.asList(aircraft));
-        return aircraft;
-    }
-    
-    public Employee getEmployeeData(Employee employee) {
-        ArrayList<Employee> employeeUse = new ArrayList<>();
-        employeeUse.addAll(Arrays.asList(employee));
-        return employee;
-    }
+    public String getAirplaneData(ArrayList<Aircraft> aircraftUse) {
         
-    public Airline() {
-        this.name = "AEROILENEAMAX";
-        this.direction = "AEROPUERTO INTERNACIONAL\nDE QUITOTABABELO S/N VIA, QUITO\n170907";
+        
+
+        //seatUse = new Seat("planenumber", 1);
+
+        return null;
+    }
+
+    public void getEmployeeData(Employee employee) {
+
+    }
+
+    public void genereteBalance(Balance balance) {
+
+    }
+
+    public Airline(String name, Employee employee, String direction, int telephone, Balance balance) {
+        this.name = "AEROLINEAMAX";
+        this.aircraft = aircraft;
+        this.employee = employee;
+        this.direction = "AEROPUERTO INTERNACIONAL DE QUITO\n TABABELO S/N VIA, QUITO 170907";
         this.telephone = 2955789;
-        
+        this.balance = balance;
     }
-    
 
     @Override
     public String toString() {
-        return "Airline{" + "name=" + getName() + ", aircraft=" + getAircraft() + ", employee=" + getEmployee() + ", direction=" + getDirection() + ", telephone=" + getTelephone() + '}';
+        return "Airline{" + "name=" + name + "; aircraft=" + aircraft + "; employee=" + employee + "; direction=" + direction + "; telephone=" + telephone + "; balance=" + balance + '}';
     }
 
     /**
@@ -63,28 +68,28 @@ public class Airline {
     /**
      * @return the aircraft
      */
-    public ArrayList<Aircraft> getAircraft() {
+    public Aircraft getAircraft() {
         return aircraft;
     }
 
     /**
      * @param aircraft the aircraft to set
      */
-    public void setAircraft(ArrayList<Aircraft> aircraft) {
+    public void setAircraft(Aircraft aircraft) {
         this.aircraft = aircraft;
     }
 
     /**
      * @return the employee
      */
-    public ArrayList<Employee> getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
 
     /**
      * @param employee the employee to set
      */
-    public void setEmployee(ArrayList<Employee> employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
@@ -116,6 +121,17 @@ public class Airline {
         this.telephone = telephone;
     }
 
-    
+    /**
+     * @return the balance
+     */
+    public Balance getBalance() {
+        return balance;
+    }
 
+    /**
+     * @param balance the balance to set
+     */
+    public void setBalance(Balance balance) {
+        this.balance = balance;
+    }
 }

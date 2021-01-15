@@ -5,66 +5,31 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  *
  * @author George
  */
 public class Customer {
-
     private String name;
     private Trading trading;
     private String id;
     private String thelephone;
     private String email;
     private Reservation reservation;
-    private String state;
 
-    
-
-    public Trading realizeTrading(Trading trading) {
-        Ticket ticket = null;
-        Payment payment = null;
-        Trading tradingUse = new Trading(ticket, payment, true);
-
-        return tradingUse;
-    }
-
-    public Reservation generateReservation(Reservation reservation) {
-
-        ArrayList<Reservation> reservationUse = new ArrayList<>();
-        reservationUse.addAll(Arrays.asList(reservation));
-        return reservation;
-    }
-
-    public String realizeCancellation() {
-        state= "CANCAELADO";
-        return state;
-    }
-
-    public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation,String state) {
+    public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation) {
         this.name = name;
         this.trading = trading;
         this.id = id;
         this.thelephone = thelephone;
         this.email = email;
         this.reservation = reservation;
-        this.state= state;
     }
+
 
     @Override
     public String toString() {
-        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation + ";" + state;
-    }
-    
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
+        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation ;
     }
 
     /**
@@ -94,6 +59,7 @@ public class Customer {
     public void setTrading(Trading trading) {
         this.trading = trading;
     }
+
 
     /**
      * @param thelephone the thelephone to set

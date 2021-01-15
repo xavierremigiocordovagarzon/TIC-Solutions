@@ -23,12 +23,6 @@ public class Employee {
         this.turn = turn;
         this.telephone = telephone;
     }
-    
-    public Employee identifyTypeOfEmployee(Employee employee) {
-
-        employee = new Employee(name, id, salary, turn, telephone);
-        return employee;
-    }
 
     @Override
     public String toString() {

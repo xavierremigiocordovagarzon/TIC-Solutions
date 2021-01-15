@@ -8,7 +8,6 @@ package ec.edu.espe.aricraftticketsystem.view;
 import ec.edu.espe.Filemanager.utils.FileManager;
 import ec.edu.espe.aricraftticketsystem.model.Airline;
 import ec.edu.espe.aricraftticketsystem.model.Customer;
-import ec.edu.espe.aricraftticketsystem.model.Employee;
 import ec.edu.espe.aricraftticketsystem.model.Payment;
 import ec.edu.espe.aricraftticketsystem.model.Reservation;
 import ec.edu.espe.aricraftticketsystem.model.Seat;
@@ -16,6 +15,7 @@ import ec.edu.espe.aricraftticketsystem.model.Ticket;
 import ec.edu.espe.aricraftticketsystem.model.Trading;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.google.gson.Gson;
 
 /**
  *
@@ -30,23 +30,17 @@ public class AricraftTicketSystem {
         // TODO code application logic here
 
         Scanner read = new Scanner(System.in);
-
-        Airline airlineUse = new Airline();
-        // Employee employeeUse = new Employee(read);
-        //airlineUse.getAirplaneData(read);
-
+        Gson jsoncon = new Gson();
+        
+        
         int option;
         int codeconter = 1;
         String Cs = null;
         do {
             System.out.println("\n");
-            System.out.println("=========================================");
-            System.out.println("     BIENVENIDO A " + airlineUse.getName());
-            System.out.println("=========================================");
-            System.out.println("UBICACION: " + airlineUse.getDirection());
-            System.out.println("=========================================");
-            System.out.println("TELEFONO: " + airlineUse.getTelephone());
-            System.out.println("=========================================");
+            System.out.println("===============================");
+            System.out.println("BIENVENIDO A AEROILENEAMAX");
+            System.out.println("===============================");
             System.out.println("1. Comprar vuelos");
             System.out.println("2. Cancelar vuelos");
             System.out.println("3. Salir");
@@ -77,18 +71,19 @@ public class AricraftTicketSystem {
                         op = read.nextInt();
                         if (op == 1) {
                             Cs = "Ventana";
-                        } else if (op == 2) {
+                        }  else if (op == 2) {
                             Cs = "Pasillo";
                         } else {
                             System.out.println("Ingresar opcion valida");
                         }
-
-                    } while (op <= 0 || op >= 3);
+                                                                     
+                    }  while(op <= 0 || op >= 3);
                     read.nextLine();
                     System.out.println("Ingrese numero de asietno: ");
                     int Csnumb = read.nextInt();
                     Seat Cseat = new Seat(Cs, Csnumb);
-                    Ticket Cticket = new Ticket(codeconter, Cseat, 560);
+                    Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
+                    read.nextLine();
                     System.out.println("Ingrese metodo de pago: ");
                     String Cpaymentmeth = read.nextLine();
                     Payment Cpay = new Payment(Cpaymentmeth, 560, 0.12F, 500);
@@ -109,21 +104,11 @@ public class AricraftTicketSystem {
                     } while (op2 <= 0 || op2 >= 3);
                     read.nextLine();
                     Trading Ctrade = new Trading(Cticket, Cpay, boucher);
-                    String stateUse = "VIGENTE";
-                    Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres, stateUse);
-                    FileManager.save("CustomerData.csv", C1.toString());
+                    Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres);
+                    String convert;
+                    convert = jsoncon.toJson(C1);
+                    FileManager.save("CustomerData.json", convert);
                     codeconter++;
-                    
-                    Seat cSeat = new Seat(Cdate, Csnumb);
-                    System.out.println("==================================================");
-                    System.out.println("CODIGO:");
-                    //System.out.println("UBICACION:" + );
-                    //System.out.println("N° ASIENTO:" + );
-                    System.out.println(Cticket.getSeat());
-                    System.out.println("ESTADO:" + C1.getState());
-                    System.out.println("PRECIO:" + Cticket.getPrice());
-                    System.out.println("==================================================");
-
                     break;
                 case 2:
                     read.nextLine();
@@ -141,8 +126,6 @@ public class AricraftTicketSystem {
                     break;
             }
         } while (option != 3);
-
-        //================================================================================================
     }
 
 }

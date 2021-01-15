@@ -19,13 +19,6 @@ public class Trading {
         this.payment = payment;
         this.voucher = voucher;
     }
-    
-    
-    public Ticket generateTicket(Ticket ticket){
-        
-        return ticket; 
-    }
-    
 
     @Override
     public String toString() {

@@ -5,8 +5,6 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author George
@@ -14,13 +12,13 @@ import java.util.ArrayList;
 public class Customer {
 
     private String name;
-    private ArrayList<Trading> trading;
+    private Trading trading;
     private String id;
     private String thelephone;
     private String email;
-    private ArrayList<Reservation> reservation;
+    private Reservation reservation;
 
-    public Customer(String name, ArrayList<Trading> trading, String id, String thelephone, String email, ArrayList<Reservation> reservation) {
+    public Customer(String name, Trading trading, String id, String thelephone, String email, Reservation reservation) {
         this.name = name;
         this.trading = trading;
         this.id = id;
@@ -31,14 +29,9 @@ public class Customer {
     
     
 
-
     @Override
     public String toString() {
-<<<<<<< HEAD
         return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation;
-=======
-        return getId() + ";" + name + ";" + trading.toString() + ";" + getThelephone() + ";" + email + ";" + reservation.toString() ;
->>>>>>> f6a820c70be22549e14312d9c64621f316275552
     }
 
     /**
@@ -58,13 +51,15 @@ public class Customer {
     /**
      * @return the trading
      */
-
+    public Trading getTrading() {
+        return trading;
+    }
 
     /**
      * @param trading the trading to set
      */
     public void setTrading(Trading trading) {
-        this.setTrading(trading);
+        this.trading = trading;
     }
 
     /**
@@ -89,10 +84,17 @@ public class Customer {
     }
 
     /**
+     * @return the reservation
+     */
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    /**
      * @param reservation the reservation to set
      */
     public void setReservation(Reservation reservation) {
-        this.setReservation(reservation);
+        this.reservation = reservation;
     }
 
     /**
@@ -114,38 +116,6 @@ public class Customer {
      */
     public void setId(String id) {
         this.id = id;
-    }
-
-    /**
-     * @param trading the trading to set
-     */
-    public void setTrading(ArrayList<Trading> trading) {
-        this.trading = trading;
-    }
-
-    /**
-     * @return the thelephone
-     */
-    public String getThelephone() {
-        return thelephone;
-    }
-
-    /**
-     * @return the trading
-     */
-    public ArrayList<Trading> getTrading() {
-        return trading;
-    }
-
-    /**
-     * @param reservation the reservation to set
-     */
-    public void setReservation(ArrayList<Reservation> reservation) {
-        this.reservation = reservation;
-    }
-
-    private Object getReservation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -13,10 +13,35 @@ public class Reservation {
 
     private String date;
     private String destination;
+    private Ticket ticket;
+    private Payment payment;
 
-    public Reservation(String date, String destination) {
+    public Reservation(String date, String destination, Ticket ticket, Payment payment) {
         this.date = date;
         this.destination = destination;
+        this.ticket = ticket;
+        this.payment = payment;
+    }
+
+    public Reservation consultTicket(String dateUse, String destinationUse, Ticket ticketUSe, Payment paymentUse) {
+        Reservation reservationUse = new Reservation(dateUse, destinationUse, ticketUSe, paymentUse);
+        return reservationUse;
+    }
+
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     @Override
@@ -24,7 +49,6 @@ public class Reservation {
         return date + ";" + destination;
     }
 
-    
     /**
      * @return the destination
      */

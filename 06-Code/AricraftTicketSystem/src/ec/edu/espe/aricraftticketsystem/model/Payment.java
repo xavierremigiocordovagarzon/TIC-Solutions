@@ -10,6 +10,7 @@ package ec.edu.espe.aricraftticketsystem.model;
  * @author George
  */
 public class Payment {
+
     private String paymentmethod;
     private float price;
     private float vat;

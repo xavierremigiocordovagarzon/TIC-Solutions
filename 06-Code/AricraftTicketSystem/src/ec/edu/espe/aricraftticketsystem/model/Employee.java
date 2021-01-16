@@ -5,28 +5,38 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author George
  */
 public class Employee {
+
     private String name;
-    private int id;
+    private String  id;
     private float salary;
     private String turn;
-    private int telephone;
+    private String telephone;
 
-    public Employee(String name, int id, float salary, String turn, int telephone) {
+    public Employee(String name, String id, float salary, String turn, String telephone) {
         this.name = name;
         this.id = id;
         this.salary = salary;
         this.turn = turn;
         this.telephone = telephone;
     }
+    
+    public Employee identifyTipeOfEmployee() {
+
+        Employee employeeUse = new Employee("ANDRES BENAVIDEZ", "2300608441", 1000.00F, "NOCTURNO", "0981297292");
+
+        return employeeUse;
+    }
 
     @Override
     public String toString() {
-        return "Employee{" + "name=" + name + "; id=" + id + "; salary=" + salary + "; turn=" + turn + "; telephone=" + telephone + '}';
+        return getName() + ";" + getId() + ";" + getSalary() + ";" + getTurn() + ";" + getTelephone();
     }
 
     /**
@@ -46,14 +56,14 @@ public class Employee {
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -88,14 +98,16 @@ public class Employee {
     /**
      * @return the telephone
      */
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
     /**
      * @param telephone the telephone to set
      */
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    
 }

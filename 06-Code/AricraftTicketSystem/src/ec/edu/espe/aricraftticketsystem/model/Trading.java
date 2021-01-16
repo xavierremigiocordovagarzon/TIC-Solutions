@@ -10,19 +10,42 @@ package ec.edu.espe.aricraftticketsystem.model;
  * @author George
  */
 public class Trading {
+
     private Ticket ticket;
     private Payment payment;
-    private boolean voucher;
 
     public Trading(Ticket ticket, Payment payment, boolean voucher) {
         this.ticket = ticket;
         this.payment = payment;
-        this.voucher = voucher;
+
+    }
+
+    public Ticket generateTicket(int num, Seat seatUse, Payment paymentUse, String setLocationUse) {//received codeconter
+
+        int codeUse = 9999;
+        codeUse = codeUse + num;
+        seatUse.getLocation();
+        seatUse.getNumber();
+        paymentUse.getPrice();
+
+        Ticket ticketUse = new Ticket(codeUse, seatUse, paymentUse.getPrice(), setLocationUse);
+
+        return ticketUse;
+    }
+
+    public Payment realizePayment(String method, float pay) {//received payment method
+
+        float subtotal = 600.00F;
+        float vat = subtotal * 0.12F;
+        float priceUse = vat + subtotal;
+        Payment paymentUse = new Payment(method, priceUse, vat, subtotal);//page
+
+        return paymentUse;
     }
 
     @Override
     public String toString() {
-        return ticket + ";" + payment + ";" + voucher;
+        return ticket + ";" + payment;
     }
 
     /**
@@ -53,17 +76,4 @@ public class Trading {
         this.payment = payment;
     }
 
-    /**
-     * @return the voucher
-     */
-    public boolean isVoucher() {
-        return voucher;
-    }
-
-    /**
-     * @param voucher the voucher to set
-     */
-    public void setVoucher(boolean voucher) {
-        this.voucher = voucher;
-    }
 }

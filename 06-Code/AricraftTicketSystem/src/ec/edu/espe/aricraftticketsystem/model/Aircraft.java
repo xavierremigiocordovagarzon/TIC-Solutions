@@ -5,31 +5,52 @@
  */
 package ec.edu.espe.aricraftticketsystem.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author George
  */
-class Aircraft {
+public class Aircraft {
 
     private String aricraftnumber;
     private Seat seat;
     private boolean availability;
     private int numberofseat;
 
-    public Aircraft(String aricraftnumber, Seat seat, boolean availability, int numberofseat) {
+    public Aircraft() {
         this.aricraftnumber = aricraftnumber;
         this.seat = seat;
         this.availability = availability;
         this.numberofseat = numberofseat;
     }
 
+    public String identifyLocationSeat(int opcion) {
+
+        String Clocation;
+        Seat seatUse = new Seat(aricraftnumber, opcion);
+        if (opcion == 1) {
+            seatUse.setLocation("Venatana");
+            Clocation = "Venatana";
+        } else {
+            seatUse.setLocation("Pasillo");
+            Clocation = "Pasillo";
+        }
+
+        return Clocation;
+    }
+
+    public Seat identifyNumberSeat(int op) {
+
+        Seat seatUse = new Seat(aricraftnumber, op);
+        seatUse.setNumber(op);
+        return seatUse;
+    }
+
     @Override
     public String toString() {
         return "Aircraft{" + "aricraftnumber=" + aricraftnumber + ", seat=" + seat + ", availability=" + availability + ", numberofseat=" + numberofseat + '}';
     }
-    
-    
-    
 
     /**
      * @return the aricraftnumber

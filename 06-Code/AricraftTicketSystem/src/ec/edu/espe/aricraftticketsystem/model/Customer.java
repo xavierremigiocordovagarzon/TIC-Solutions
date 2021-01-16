@@ -10,6 +10,7 @@ package ec.edu.espe.aricraftticketsystem.model;
  * @author George
  */
 public class Customer {
+
     private String name;
     private Trading trading;
     private String id;
@@ -25,11 +26,12 @@ public class Customer {
         this.email = email;
         this.reservation = reservation;
     }
-
+    
+    
 
     @Override
     public String toString() {
-        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation ;
+        return getId() + ";" + name + ";" + trading + ";" + thelephone + ";" + email + ";" + reservation;
     }
 
     /**
@@ -59,7 +61,6 @@ public class Customer {
     public void setTrading(Trading trading) {
         this.trading = trading;
     }
-
 
     /**
      * @param thelephone the thelephone to set

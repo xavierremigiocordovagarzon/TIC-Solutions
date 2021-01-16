@@ -10,6 +10,7 @@ package ec.edu.espe.aricraftticketsystem.model;
  * @author George
  */
 public class Seat {
+
     private String location;
     private int number;
 

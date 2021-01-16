@@ -6,6 +6,7 @@
 package ec.edu.espe.aricraftticketsystem.view;
 
 import ec.edu.espe.Filemanager.utils.FileManager;
+import ec.edu.espe.aricraftticketsystem.model.Aircraft;
 import ec.edu.espe.aricraftticketsystem.model.Airline;
 import ec.edu.espe.aricraftticketsystem.model.Customer;
 import ec.edu.espe.aricraftticketsystem.model.Payment;
@@ -16,6 +17,7 @@ import ec.edu.espe.aricraftticketsystem.model.Trading;
 import java.util.ArrayList;
 import java.util.Scanner;
 import com.google.gson.Gson;
+import ec.edu.espe.aricraftticketsystem.model.Employee;
 
 /**
  *
@@ -31,26 +33,28 @@ public class AricraftTicketSystem {
 
         Scanner read = new Scanner(System.in);
         Gson jsoncon = new Gson();
+        Seat Cseat;
+        Aircraft Caircraft = new Aircraft();
         
-        
+
         int option;
         int codeconter = 1;
-        String Cs = null;
+        String Cs = new String();
         do {
             System.out.println("\n");
-            System.out.println("===============================");
-            System.out.println("BIENVENIDO A AEROILENEAMAX");
-            System.out.println("===============================");
+            System.out.println("====================================");
+            System.out.println("    BIENVENIDO A AEROILENEAMAX");
+            System.out.println("====================================");
             System.out.println("1. Comprar vuelos");
             System.out.println("2. Cancelar vuelos");
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
             option = read.nextInt();
-            System.out.println("\n===============================");
+            System.out.println("\n====================================");
             switch (option) {
                 case 1:
                     read.nextLine();
-                    System.out.print("Ingrese sus apellidos y nombres: ");
+                    System.out.println("Ingrese sus apellidos y nombres: ");
                     String Cname = read.nextLine();
                     System.out.println("Ingrese su cedula: ");
                     String Cid = read.nextLine();
@@ -62,7 +66,11 @@ public class AricraftTicketSystem {
                     String Cdate = read.nextLine();
                     System.out.println("Ingrese lugar de destino: ");
                     String Cdest = read.nextLine();
-                    Reservation Cres = new Reservation(Cdate, Cdest);
+                    System.out.println("Ingrese numero de asietno: ");
+                    int Csnumb = read.nextInt();
+                    read.nextLine();
+                    Caircraft.identifyNumberSeat(Csnumb);
+                    Cseat = new Seat(Cs, Csnumb);
                     int op;
                     do {
                         System.out.println("Seleccione ubicacion de asiento:");
@@ -70,40 +78,38 @@ public class AricraftTicketSystem {
                         System.out.println("2.Pasillo");
                         op = read.nextInt();
                         if (op == 1) {
-                            Cs = "Ventana";
-                        }  else if (op == 2) {
-                            Cs = "Pasillo";
+                            Cs = Caircraft.identifyLocationSeat(op);
+                        } else if (op == 2) {
+                            Cs = Caircraft.identifyLocationSeat(op);
                         } else {
                             System.out.println("Ingresar opcion valida");
                         }
-                                                                     
-                    }  while(op <= 0 || op >= 3);
-                    read.nextLine();
-                    System.out.println("Ingrese numero de asietno: ");
-                    int Csnumb = read.nextInt();
-                    Seat Cseat = new Seat(Cs, Csnumb);
-                    Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
-                    read.nextLine();
+
+                    } while (op <= 0 || op >= 3);
+                    
                     System.out.println("Ingrese metodo de pago: ");
                     String Cpaymentmeth = read.nextLine();
-                    Payment Cpay = new Payment(Cpaymentmeth, 560, 0.12F, 500);
+                    
                     int op2;
-                    boolean boucher = false;
+                    boolean voucher = false;
                     do {
                         System.out.println("¿Desea generar un boucher?");
                         System.out.println("1.Si");
                         System.out.println("2.No");
                         op2 = read.nextInt();
                         if (op2 == 1) {
-                            boucher = true;
+                            voucher = true;
                         } else if (op2 == 2) {
-                            boucher = false;
+                            voucher = false;
                         } else {
                             System.out.println("Ingresar opcion valida");
                         }
                     } while (op2 <= 0 || op2 >= 3);
-                    read.nextLine();
-                    Trading Ctrade = new Trading(Cticket, Cpay, boucher);
+                    read.nextLine(); 
+                    Payment Cpay = new Payment(Cpaymentmeth, 560, 0.12F, 500);  
+                    Ticket Cticket = new Ticket(codeconter, Cseat, 560, Cs);
+                    Reservation Cres = new Reservation(Cdate, Cdest, Cticket, Cpay);
+                    Trading Ctrade = new Trading(Cticket, Cpay, voucher);
                     Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres);
                     String convert;
                     convert = jsoncon.toJson(C1);
@@ -114,11 +120,13 @@ public class AricraftTicketSystem {
                     read.nextLine();
                     System.out.println("Ingrese su cedula: ");
                     String Cids = read.nextLine();
-                    ArrayList data = FileManager.find("CustomerData.csv", Cids);
+                    ArrayList data = FileManager.find("CustomerData.json", Cids);
                     System.out.println(data);
                     break;
 
                 case 3:
+                    System.out.print("<<==MUCHAS GRACIAS POR PREFERIRNOS==>>");
+                    System.out.println("\n====================================");
 
                     break;
                 default:

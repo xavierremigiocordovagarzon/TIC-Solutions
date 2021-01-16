@@ -18,37 +18,28 @@ public class Airline {
     private Employee employee;
     private String direction;
     private int telephone;
-    private Balance balance;
 
-    public String getAirplaneData(ArrayList<Aircraft> aircraftUse) {
-        
-        
-
-        //seatUse = new Seat("planenumber", 1);
-
-        return null;
-    }
-
-    public void getEmployeeData(Employee employee) {
-
-    }
-
-    public void genereteBalance(Balance balance) {
-
-    }
-
-    public Airline(String name, Employee employee, String direction, int telephone, Balance balance) {
-        this.name = "AEROLINEAMAX";
+    public Airline(String name, Employee employee, String direction, int telephone) {
+        this.name = name;
         this.aircraft = aircraft;
         this.employee = employee;
-        this.direction = "AEROPUERTO INTERNACIONAL DE QUITO\n TABABELO S/N VIA, QUITO 170907";
-        this.telephone = 2955789;
-        this.balance = balance;
+        this.direction = direction;
+        this.telephone = telephone;
+
+    }
+
+    public Airline getAirplaneData(String name, String direction, int telephone) {
+        name = "AEROLINEAMAX";
+        telephone = 2955789;
+        direction = "AEROPUERTO INTERNACIONAL DE QUITO\n TABABELO S/N VIA, QUITO 170907";
+        Airline airlineUse = new Airline(name, employee, direction, telephone);
+
+        return airlineUse;
     }
 
     @Override
     public String toString() {
-        return "Airline{" + "name=" + name + "; aircraft=" + aircraft + "; employee=" + employee + "; direction=" + direction + "; telephone=" + telephone + "; balance=" + balance + '}';
+        return "Airline{" + "name=" + name + ", aircraft=" + aircraft + ", employee=" + employee + ", direction=" + direction + ", telephone=" + telephone + '}';
     }
 
     /**
@@ -121,17 +112,4 @@ public class Airline {
         this.telephone = telephone;
     }
 
-    /**
-     * @return the balance
-     */
-    public Balance getBalance() {
-        return balance;
-    }
-
-    /**
-     * @param balance the balance to set
-     */
-    public void setBalance(Balance balance) {
-        this.balance = balance;
-    }
 }

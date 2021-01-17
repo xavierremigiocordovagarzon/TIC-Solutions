@@ -111,10 +111,13 @@ public class AricraftTicketSystem {
                     Reservation Cres = new Reservation(Cdate, Cdest, Cticket, Cpay);
                     Trading Ctrade = new Trading(Cticket, Cpay, voucher);
                     Customer C1 = new Customer(Cname, Ctrade, Cid, Cphone, Cemail, Cres);
+                    ArrayList<Customer> C2 = new ArrayList<>();
+                    C2.add(C1);
                     String convert;
-                    convert = jsoncon.toJson(C1);
+                    convert = jsoncon.toJson(C2);
                     FileManager.save("CustomerData.json", convert);
                     codeconter++;
+            
                     break;
                 case 2:
                     read.nextLine();

@@ -21,8 +21,10 @@ public class Seat {
 
     @Override
     public String toString() {
-        return location + ";" + number;
+        return   location + "," + number ;
     }
+
+    
 
     /**
      * @return the location

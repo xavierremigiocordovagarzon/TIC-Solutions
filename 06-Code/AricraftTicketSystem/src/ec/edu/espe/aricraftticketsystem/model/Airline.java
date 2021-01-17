@@ -39,7 +39,7 @@ public class Airline {
 
     @Override
     public String toString() {
-        return "Airline{" + "name=" + name + ", aircraft=" + aircraft + ", employee=" + employee + ", direction=" + direction + ", telephone=" + telephone + '}';
+        return  name + ";" + aircraft + ";" + employee + ";" + direction + ";" + telephone;
     }
 
     /**

@@ -62,13 +62,16 @@ public class AricraftTicketSystem {
                     name = validateUse.validateWords(name);
                     System.out.println("Ingrese su cedula: ");
                     String id = read.nextLine();
+                    id = validateUse.validateid(id);
                     System.out.println("Ingrese su numero telefonico: ");
                     String phone = read.nextLine();
                     phone = validateUse.validatephone(phone);
                     System.out.println("Ingrese correo electronico: ");
                     String email = read.nextLine();
+                    email = validateUse.validateEmail(email);
                     System.out.println("Ingrese fecha de vuelo (DD/MM/AAAA): ");
                     String date = read.nextLine();
+                    date = validateUse.validateDate(date);
                     System.out.println("Ingrese lugar de destino: ");
                     String destination = read.nextLine();
                     destination = validateUse.validateWords(destination);

@@ -11,15 +11,19 @@ package ec.edu.espe.aricraftticketsystem.model;
  */
 public class Trading {
 
-    private Ticket ticket;
-    private Payment payment;
+    private String state;
 
-    public Trading(Ticket ticket, Payment payment, boolean voucher) {
-        this.ticket = ticket;
-        this.payment = payment;
-
+    public Trading(String state) {
+        this.state = "COMPRA VIGENTE";
     }
 
+    @Override
+    public String toString() {
+        return getState();
+    }
+    
+    
+    
     public Ticket generateTicket(int num, Seat seatUse, Payment paymentUse, String setLocationUse) {//received codeconter
 
         int codeUse = 9999;
@@ -28,7 +32,7 @@ public class Trading {
         seatUse.getNumber();
         paymentUse.getPrice();
 
-        Ticket ticketUse = new Ticket(codeUse, seatUse, paymentUse.getPrice(), setLocationUse);
+        Ticket ticketUse = new Ticket(codeUse, seatUse.getLocation());
 
         return ticketUse;
     }
@@ -43,37 +47,19 @@ public class Trading {
         return paymentUse;
     }
 
-    @Override
-    public String toString() {
-        return ticket + ";" + payment;
+    /**
+     * @return the state
+     */
+    public String getState() {
+        return state;
     }
 
     /**
-     * @return the ticket
+     * @param state the state to set
      */
-    public Ticket getTicket() {
-        return ticket;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    /**
-     * @param ticket the ticket to set
-     */
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
-    /**
-     * @return the payment
-     */
-    public Payment getPayment() {
-        return payment;
-    }
-
-    /**
-     * @param payment the payment to set
-     */
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
-
+    
 }

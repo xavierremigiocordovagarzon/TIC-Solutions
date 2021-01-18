@@ -10,24 +10,19 @@ package ec.edu.espe.aricraftticketsystem.model;
  * @author George
  */
 public class Ticket {
+
     private int code;
-    private Seat seat;
-    private float price;
     private String setlocation;
 
-    public Ticket(int code, Seat seat, float price, String setlocation) {
+    public Ticket(int code, String setlocation) {
         this.code = code;
-        this.seat = seat;
-        this.price = price;
         this.setlocation = setlocation;
     }
 
     @Override
     public String toString() {
-        return code + ";" + seat + ";" + price + ";" + setlocation;
+        return code  + ";" + setlocation;
     }
-
-
 
     /**
      * @return the code
@@ -43,19 +38,6 @@ public class Ticket {
         this.code = code;
     }
 
-    /**
-     * @return the price
-     */
-    public float getPrice() {
-        return price;
-    }
-
-    /**
-     * @param price the price to set
-     */
-    public void setPrice(float price) {
-        this.price = price;
-    }
     
     /**
      * @return the setlocation
@@ -71,17 +53,4 @@ public class Ticket {
         this.setlocation = setlocation;
     }
 
-    /**
-     * @return the seat
-     */
-    public Seat getSeat() {
-        return seat;
-    }
-
-    /**
-     * @param seat the seat to set
-     */
-    public void setSeat(Seat seat) {
-        this.seat = seat;
-    }
 }

@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.aricraftticketsystem.view;
 
-import ec.edu.espe.validate.utils.Validate;
+
 import ec.edu.espe.Filemanager.utils.FileManager;
 import ec.edu.espe.aricraftticketsystem.model.Aircraft;
 import ec.edu.espe.aricraftticketsystem.model.Airline;
@@ -19,6 +19,8 @@ import ec.edu.espe.aricraftticketsystem.model.Employee;
 import java.util.ArrayList;
 import java.util.Scanner;
 import com.google.gson.Gson;
+import ec.edu.espe.validate.utils.Validate;
+
 
 /**
  *
@@ -34,13 +36,14 @@ public class AricraftTicketSystem {
 
         Scanner read = new Scanner(System.in);
         Gson jsoncon = new Gson();
-        Seat seat;
         Aircraft aircraft = new Aircraft();
         Validate validateUse = new Validate();
-        int option;
-        int codeconter = 1;
         String location = new String();
-        
+        String state = new String();
+        Seat seat;
+        int option,option2;
+        int codeconter = 1;
+
         do {
             System.out.println("====================================");
             System.out.println("    BIENVENIDO A AEROILENEAMAX");
@@ -61,6 +64,7 @@ public class AricraftTicketSystem {
                     String id = read.nextLine();
                     System.out.println("Ingrese su numero telefonico: ");
                     String phone = read.nextLine();
+                    phone = validateUse.validatephone(phone);
                     System.out.println("Ingrese correo electronico: ");
                     String email = read.nextLine();
                     System.out.println("Ingrese fecha de vuelo (DD/MM/AAAA): ");
@@ -78,16 +82,16 @@ public class AricraftTicketSystem {
                         System.out.println("1.Ventana");
                         System.out.println("2.Pasillo");
                         option1 = read.nextLine();
-                        option = validateUse.validateNumber(option1);
-                        if (option == 1) {
-                            location = aircraft.identifyLocationSeat(option);
-                        } else if (option == 2) {
-                            location = aircraft.identifyLocationSeat(option);
+                        option2 = validateUse.validateNumber(option1);
+                        if (option2 == 1) {
+                            location = aircraft.identifyLocationSeat(option2);
+                        } else if (option2 == 2) {
+                            location = aircraft.identifyLocationSeat(option2);
                         } else {
                             System.out.println("Ingresar opcion valida");
                         }
 
-                    } while (option <= 0 || option >= 3);
+                    } while (option2 <= 0 || option2 >= 3);
 
                     System.out.println("Ingrese metodo de pago: ");
                     String paymentMeth = read.nextLine();
@@ -99,19 +103,19 @@ public class AricraftTicketSystem {
                         System.out.println("1.Si");
                         System.out.println("2.No");
                         option1 = read.nextLine();
-                        option = validateUse.validateNumber(option1);
-                        if (option == 1) {
+                        option2 = validateUse.validateNumber(option1);
+                        if (option2 == 1) {
                             voucher = true;
-                        } else if (option == 2) {
+                        } else if (option2 == 2) {
                             voucher = false;
                         } else {
                             System.out.println("Ingresar opcion valida");
                         }
-                    } while (option <= 0 || option >= 3);
+                    } while (option2 <= 0 || option2 >= 3);
                     Payment paymentUse = new Payment(paymentMeth, 560, 0.12F, 500);
-                    Ticket ticketUse = new Ticket(codeconter, seat, 560, location);
+                    Ticket ticketUse = new Ticket(codeconter,location);
                     Reservation reservationUse = new Reservation(date, destination, ticketUse, paymentUse);
-                    Trading tradingUse = new Trading(ticketUse, paymentUse, voucher);
+                    Trading tradingUse = new Trading(state);
                     Customer customerUse = new Customer(name, tradingUse, id, phone, email, reservationUse);
                     ArrayList<Customer> customerUse2 = new ArrayList<>();
                     customerUse2.add(customerUse);
@@ -122,11 +126,23 @@ public class AricraftTicketSystem {
 
                     break;
                 case 2:
-                    read.nextLine();
+                    
                     System.out.println("Ingrese su cedula: ");
-                    String Cids = read.nextLine();
-                    ArrayList data = FileManager.find("CustomerData.json", Cids);
-                    System.out.println(data);
+                    id = read.nextLine();
+                    ArrayList data = FileManager.find("CustomerData.json", id);
+                    System.out.println("DATOS DEL PASAJER0: \n" + data);
+                    System.out.println("\n====================================");
+                    System.out.println("Confirmar Cancelación:\n1)Si\n2)Salir\nSeleccione:");
+                    option1 = read.nextLine();
+                    option2 = validateUse.validateNumber(option1);
+                    if (option2 == 1) {
+                        
+                    } else if (option2 == 2) {
+                        
+                    } else {
+                        System.out.println("Ingresar opcion valida");
+                    }
+                    
                     break;
 
                 case 3:

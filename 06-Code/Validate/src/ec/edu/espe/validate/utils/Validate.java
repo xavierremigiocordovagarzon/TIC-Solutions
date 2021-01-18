@@ -44,7 +44,7 @@ public class Validate {
             for (int i = 0; i < words.length(); i++) {
                 caracter = words.toUpperCase().charAt(i);
                 int valorASCII = (int) caracter;
-                if (caracter == ' '){
+                if (caracter == ' ') {
                     state = true;
                 } else if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90)) {
                     state = false;
@@ -55,10 +55,36 @@ public class Validate {
                     state = true;
                 }
             }
-        }while(state == false);
-        
-        
+        } while (state == false);
+
         return words;
     }
+
+    public String validatephone(String phone) {
+        Scanner read = new Scanner(System.in);
+        boolean state = false;
+        char caracter, caracterUse;
+        do {
+            caracter = phone.toUpperCase().charAt(0);
+            caracterUse = phone.toUpperCase().charAt(1);
+            int valorASCII = (int) caracter;
+            if (phone.matches("[0-9]*") && 10 == phone.length() && caracter == '0') {
+                if (caracterUse == '9') {
+                    state = true;
+                } else {
+                    state = false;
+                }
+
+            } else {
+                System.out.println("Numero incorrecto, ingrese de nuevo:");
+                phone = read.nextLine();
+                state = false;
+            }
+        } while (state == false);
+
+        return phone;
+    }
+    
+    
 
 }

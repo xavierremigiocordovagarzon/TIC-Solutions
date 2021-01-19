@@ -40,10 +40,10 @@ public class Aircraft {
         return Clocation;
     }
 
-    public Seat identifyNumberSeat(int op) {
+    public Seat identifyNumberSeat(int numberSeat) {
 
-        Seat seatUse = new Seat(aricraftnumber, op);
-        seatUse.setNumber(op);
+        Seat seatUse = new Seat(aricraftnumber, numberSeat);
+        seatUse.setNumber(numberSeat);
         return seatUse;
     }
 

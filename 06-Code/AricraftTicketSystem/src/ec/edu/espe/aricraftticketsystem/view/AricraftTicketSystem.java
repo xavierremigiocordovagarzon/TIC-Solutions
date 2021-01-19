@@ -49,7 +49,7 @@ public class AricraftTicketSystem {
             System.out.println("    BIENVENIDO A AEROILENEAMAX");
             System.out.println("====================================");
             System.out.println("1. Comprar vuelos");
-            System.out.println("2. Cancelar vuelos");
+            System.out.println("2. Ver vuelos");
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
             String option1 = read.nextLine();
@@ -135,16 +135,6 @@ public class AricraftTicketSystem {
                     ArrayList data = FileManager.find("CustomerData.json", id);
                     System.out.println("DATOS DEL PASAJER0: \n" + data);
                     System.out.println("\n====================================");
-                    System.out.println("Confirmar Cancelación:\n1)Si\n2)Salir\nSeleccione:");
-                    option1 = read.nextLine();
-                    option2 = validateUse.validateNumber(option1);
-                    if (option2 == 1) {
-                        
-                    } else if (option2 == 2) {
-                        
-                    } else {
-                        System.out.println("Ingresar opcion valida");
-                    }
                     
                     break;
 

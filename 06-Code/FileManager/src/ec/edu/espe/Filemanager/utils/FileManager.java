@@ -80,12 +80,11 @@ public class FileManager {
         return lineretrived;
     }
 
-    public static ArrayList<String> findAll(String fileName) {
+    public static ArrayList findAll(String fileName) {
         //TODO finding dataToFind in file fileName
         String linea;
-        ArrayList<String> dataField;
+        ArrayList dataField;
         dataField = new ArrayList();
-
         FileReader file;
         BufferedReader read;
         try {
@@ -97,16 +96,12 @@ public class FileManager {
                 read = new BufferedReader(file);
 
                 while ((linea = read.readLine()) != null) {
-                    dataField.add(linea + "\n");
+                    dataField.add(linea);
                 }
-                /*for (int i = 0; i < dataField.size(); i++) {
-                    System.out.println(dataField.get(i));
-                }*/
                 read.close();
-
             }
         } catch (IOException ex) {
-            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+            dataField = null;
         }
         return dataField;
     }

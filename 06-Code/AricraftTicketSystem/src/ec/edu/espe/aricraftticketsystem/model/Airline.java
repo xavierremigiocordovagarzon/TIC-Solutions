@@ -14,32 +14,19 @@ import java.util.ArrayList;
 public class Airline {
 
     private String name;
-    private Aircraft aircraft;
-    private Employee employee;
     private String direction;
-    private int telephone;
+    private String telephone;
 
-    public Airline(String name, Employee employee, String direction, int telephone) {
-        this.name = name;
-        this.aircraft = aircraft;
-        this.employee = employee;
-        this.direction = direction;
-        this.telephone = telephone;
+    public Airline() {
+        this.name = "AEROILENEAMAX";
+        this.direction = "Tababela S/N - Via, Quito 170907";
+        this.telephone = "(02) 395-4260";
 
-    }
-
-    public Airline getAirplaneData(String name, String direction, int telephone) {
-        name = "AEROLINEAMAX";
-        telephone = 2955789;
-        direction = "AEROPUERTO INTERNACIONAL DE QUITO\n TABABELO S/N VIA, QUITO 170907";
-        Airline airlineUse = new Airline(name, employee, direction, telephone);
-
-        return airlineUse;
     }
 
     @Override
     public String toString() {
-        return  name + ";" + aircraft + ";" + employee + ";" + direction + ";" + telephone;
+        return  name + ";" + direction + ";" + getTelephone();
     }
 
     /**
@@ -54,34 +41,6 @@ public class Airline {
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * @return the aircraft
-     */
-    public Aircraft getAircraft() {
-        return aircraft;
-    }
-
-    /**
-     * @param aircraft the aircraft to set
-     */
-    public void setAircraft(Aircraft aircraft) {
-        this.aircraft = aircraft;
-    }
-
-    /**
-     * @return the employee
-     */
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    /**
-     * @param employee the employee to set
-     */
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     /**
@@ -101,15 +60,16 @@ public class Airline {
     /**
      * @return the telephone
      */
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
     /**
      * @param telephone the telephone to set
      */
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
 
 }

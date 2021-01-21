@@ -13,12 +13,14 @@ public class Reservation {
 
     private String date;
     private String destination;
+    private String departure;
     private Ticket ticket;
     private Payment payment;
 
     public Reservation(String date, String destination, Ticket ticket, Payment payment) {
         this.date = date;
         this.destination = destination;
+        this.departure = "Quito";
         this.ticket = ticket;
         this.payment = payment;
     }
@@ -46,7 +48,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return date + ";" + destination;
+        return date + ";" + departure + "-" + destination;
     }
 
     /**
@@ -75,5 +77,19 @@ public class Reservation {
      */
     public void setDate(String date) {
         this.date = date;
+    }
+
+    /**
+     * @return the departure
+     */
+    public String getDeparture() {
+        return departure;
+    }
+
+    /**
+     * @param departure the departure to set
+     */
+    public void setDeparture(String departure) {
+        this.departure = departure;
     }
 }

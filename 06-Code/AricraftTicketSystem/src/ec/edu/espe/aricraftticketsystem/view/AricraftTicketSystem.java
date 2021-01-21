@@ -78,7 +78,12 @@ public class AricraftTicketSystem {
                                         System.out.println("Ningun Vuelo comprado");
                                         System.out.println("===============================");
                                     } else {
-                                        System.out.println(flights);
+                                        for (int i = 0; i < flights.size(); i++) {
+                                            convert = flights.get(i).toString();
+                                            Customer flightconvert;
+                                            flightconvert = jsoncon.fromJson(convert, Customer.class);
+                                            System.out.println(flightconvert);
+                                        }
                                         int quantity = flights.size();
                                         System.out.println("Numero de vuelos totales: " + quantity);
                                         System.out.println("===============================");
@@ -196,9 +201,14 @@ public class AricraftTicketSystem {
                                 } else {
                                     System.out.println("Ingrese su cedula: ");
                                     id = read.nextLine();
-                                    ArrayList data = FileManager.find("CustomerData.json", "\"id\":\""+id+"\"");
+                                    ArrayList data = FileManager.find("CustomerData.json", "\"id\":\"" + id + "\"");
                                     System.out.println("=========DATOS DEL PASAJER0=========");
-                                    System.out.println(data);
+                                    for (int i = 0; i < data.size(); i++) {
+                                        convert = data.get(i).toString();
+                                        Customer dataconvert;
+                                        dataconvert = jsoncon.fromJson(convert, Customer.class);
+                                        System.out.println(dataconvert);
+                                    }
                                     System.out.println("Numeros de vuelos comprados: " + data.size());
                                     System.out.println("====================================");
                                 }
